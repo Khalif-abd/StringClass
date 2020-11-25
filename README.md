@@ -1,5 +1,5 @@
 # StrClass:
-<?
+        <?
         include_once('StrClass.php');
 
           //Старый пример
@@ -15,4 +15,4 @@
             $str1 = Str::from('<sctipt>Hello world!</script>');
             $str1->htmlSpecialChars()->concat(' concat text ')->insert(19,' inser text ')->reverse()->toUpperCase();
             echo $str1;
-?>
+        ?>
