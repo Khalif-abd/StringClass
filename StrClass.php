@@ -16,11 +16,13 @@ class Str {
     }
 
     public function reverse() {
-        return $this->str = strrev($this->str);     
+        $this->str = strrev($this->str);
+        return $this;     
     } 
 
     public function length() {
-        return $this->str = strval(mb_strlen($this->str));
+        $this->str = strval(mb_strlen($this->str));
+        return $this;
     }
 
     public function length2() {
@@ -28,56 +30,69 @@ class Str {
     }
 
     public function concat($string1 = null) {
-        return $this->str = $this->str.$this->getString($string1);
+        $this->str = $this->str.$this->getString($string1);
+        return $this;
     }
 
     public function trim() {
-        return $this->str = trim($this->str);
+        $this->str = trim($this->str);
+        return $this;
     }
 
     public function toLowerCase() {
-        return $this->str = mb_strtolower($this->str);
+        $this->str = mb_strtolower($this->str);
+        return $this;
     }
 
     public function toUpperCase() {
-        return $this->str = mb_strtoupper($this->str);
+        $this->str = mb_strtoupper($this->str);
+        return $this;
     }
 
     public function equals($string = null) {
-        return  $this->str = strval($this->str == $this->getString($string));
+        $this->str = strval($this->str == $this->getString($string));
+        return  $this;
     }
 
     public function isEmpty() {
-        return $this->str = $this->length() == 0;
+        $this->str = $this->length() == 0;
+        return $this;
     }
 
     public function htmlSpecialChars() {
-        return $this->str = htmlspecialchars($this->str);
+        $this->str = htmlspecialchars($this->str);
+        return $this;
     }
 
     public function htmlSpecialCharsDecode() {
-        return $this->str = htmlspecialchars_decode($this->str);
+        $this->str = htmlspecialchars_decode($this->str);
+        return $this;
     }
 
     public function firstIndex ($subscr = null) {
-        return $this->str = strval(stripos($this->str, $subscr));
+        $this->str = strval(stripos($this->str, $subscr));
+        return $this;
     }
 
     public function lastIndex($subscr = null) {
         return $this->str = strval(strripos($this, $subscr));
+        return $this;
     }
 
     public function stripTags() {
-        return $this->str = strip_tags($this->str);
+        $this->str = strip_tags($this->str);
+        return $this;
     }
 
     public function stripSlashes() {
-        return $this->str = stripslashes($this->str);
+        $this->str = stripslashes($this->str);
+        return $this;
     }
 
     public function substring($start = 0, $end = 0) {
         $newStr = ($start == $end) ? "" : mb_substr($this->str, $start, ($end > 0) ? $end - $start : null);
-        return $this->str = $newStr;
+        $this->str = $newStr;
+        return $this;
     }
 
     private function substring2($start = 0, $end = 0) {
@@ -85,14 +100,16 @@ class Str {
         return new Str($newStr);
     }
 
-    function startsWith($ndle=null) {
+    public function startsWith($ndle=null) {
          $length = strlen($ndle);
-         return $this->str = (strval(substr($this->str, 0, $length) === $ndle? 1:0));
+         $this->str = (strval(substr($this->str, 0, $length) === $ndle? 1:0));
+         return $this;
     }
     
-    function endsWith($ndle=null) {
+    public function endsWith($ndle=null) {
         $length = strlen($ndle);
-         return $this->str = (strval(substr($this->str, -$length) === $ndle? 1:0));
+        $this->str = (strval(substr($this->str, -$length) === $ndle? 1:0));
+        return $this;
     }
 
     public function insert($index = 0, $string = null) {
@@ -100,7 +117,7 @@ class Str {
         $before = $index == 0 ? "" : $this->substring2(0, $index);
         $after = $this->substring2($index, $this->length2());
         $this->str = $before.$objString.$after;
-        return strval($this);
+        return $this;
     }
    
 
